@@ -1,30 +1,18 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import { RouterLink, RouterView } from 'vue-router';
+
 </script>
 
 <template>
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <nav class="p-4 bg-blue-100 h-[var(--navbar-height)] flex items-center gap-4">
+    <RouterLink to="/demo-list">
+      <span class="text-blue-800 underline-offset-4" :class="{ underline: $route.path === '/demo-list' }">列表页</span>
+    </RouterLink>
+    <RouterLink to="/demo-list-detail">
+      <span class="text-blue-800 underline-offset-4" :class="{ underline: $route.path === '/demo-list-detail' }">详情</span>
+    </RouterLink>
+  </nav>
+  <main class="p-4 bg-gray-50 min-h-[calc(100vh-var(--navbar-height))]">
+    <RouterView></RouterView>
+  </main>
 </template>
-
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
