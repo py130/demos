@@ -5,17 +5,23 @@ import DemoListDetail from '../pages/demo-list-detail/index.vue';
 
 const routes = [
   {
-    path: '/',
-    redirect: '/demo-list'
+    path: '/demos',
+    redirect: '/demos/demo-list'
   },
   {
-    path: '/demo-list',
-    component: DemoList,
-  },
-  {
-    path: '/demo-list-detail',
-    component: DemoListDetail,
-  },
+    path: '/demos',
+    children: [
+      {
+        path: 'demo-list',
+        component: DemoList,
+      },
+      {
+        path: 'demo-list-detail',
+        component: DemoListDetail,
+      },
+    ]
+  }, 
+  
 ]
 
 const router = createRouter({
