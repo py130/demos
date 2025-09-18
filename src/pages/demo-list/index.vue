@@ -13,10 +13,6 @@ const demoList = ref<DemoItem[]>([
     title: '虚拟列表（demo-virtual-list）',
     componentName: 'DemoVirtualList',
   },
-  {
-    title: '测试demo2',
-    componentName: 'TestDemo2',
-  },
 ])
 
 const router = useRouter() 

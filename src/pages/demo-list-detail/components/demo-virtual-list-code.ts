@@ -1,8 +1,8 @@
+export default `
 <script setup lang="ts">
-import { nextTick, onMounted, onUnmounted, ref, watchEffect } from 'vue';
+import { nextTick, ref, watchEffect } from 'vue';
 import code from './demo-virtual-list-code.ts'
 import { NCode } from 'naive-ui'
-import { debounce } from 'lodash'
 
 const props = defineProps({
   isShowCode: {
@@ -10,8 +10,6 @@ const props = defineProps({
     default: false
   }
 })
-
-const mainContentHeight = ref('0px')
 
 interface listItem {
   id: number
@@ -55,7 +53,7 @@ const initObserver = async () => {
       const index = Number(target.dataset.index)
       if (!entry.isIntersecting) {
         if (!isInitial) {
-          target.style.height = `${target.clientHeight}px`
+          target.style.height = \`\${target.clientHeight}px\`
           listData.value[index].show = false
         }
       } else {
@@ -78,36 +76,18 @@ watchEffect(() => {
   }
 })
 
-const calcMainContentHeight = () => {
-  const viewpointHeight = window.innerHeight
-  const systemNav = document.querySelector('.system-nav') as HTMLElement
-  const demoHeader = document.querySelector('.demo-header') as HTMLElement
-  if (!systemNav || !demoHeader) return
-  mainContentHeight.value = `${viewpointHeight - systemNav.offsetHeight - demoHeader.offsetHeight - 50}px`
-}
-
-const debounceCalcHeight = debounce(calcMainContentHeight, 50)
-
-onMounted(() => {
-  calcMainContentHeight()
-  window.addEventListener('resize', debounceCalcHeight)
-})
-
-onUnmounted(() => {
-  window.removeEventListener('resize', debounceCalcHeight)
-})
-
 </script>
 
 <template>
-  <div class="virtual-list-container overflow-y-auto" :style="{ height: mainContentHeight }" v-if="!isShowCode">
+  <div class="virtual-list-container max-h-[50vh] overflow-y-auto" v-if="!isShowCode">
     <div v-for="item, index in listData" :key="index" class="">
       <div class="virtual-list-item border-solid border-2 border-black mb-4 min-h-[40px]" :data-index="index">
         <div v-if="item.show">{{ item.value }}</div>
       </div>
     </div>
   </div>
-  <div class="overflow-auto" :style="{ height: mainContentHeight }" v-if="isShowCode">
+  <div class="overflow-auto">
     <n-code language="javascript" :code="code"></n-code>
   </div>
 </template>
+`

@@ -13,7 +13,7 @@ const navList = [
 ]
 </script>
 <template>
-  <nav class="px-4 bg-orange-100 h-[var(--navbar-height)] flex items-center gap-4 ">
+  <nav class="system-nav px-4 bg-orange-100 h-[var(--navbar-height)] flex items-center gap-4 ">
     <NavListItem
       v-for="({ navPath, navLabel }) in navList"
       :navPath="navPath"
