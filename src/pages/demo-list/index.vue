@@ -10,8 +10,8 @@ interface DemoItem {
 
 const demoList = ref<DemoItem[]>([
   {
-    title: '测试demo',
-    componentName: 'TestDemo',
+    title: '虚拟列表（demo-virtual-list）',
+    componentName: 'DemoVirtualList',
   },
   {
     title: '测试demo2',
@@ -20,10 +20,10 @@ const demoList = ref<DemoItem[]>([
 ])
 
 const router = useRouter() 
-const onClickView = (componentName: string) => {
+const onClickView = ({ title, componentName }: DemoItem) => {
   router.push({
     path: '/demos/demo-list-detail',
-    query: { componentName }
+    query: { title, componentName }
   })
 }
 </script>
@@ -32,7 +32,7 @@ const onClickView = (componentName: string) => {
     <li
       v-for="(item, index) in demoList"
       class="group flex gap-2 cursor-pointer mb-2 transition-all duration-100 hover:rounded hover:border-solid hover:border-2 hover:border-orange-800 active:bg-orange-100 p-2"
-      @click="() => onClickView(item.componentName)"
+      @click="() => onClickView(item)"
     >
       {{ index + 1 }}、{{ item.title }}<img class="w-4" :src="BeginSvg"></img>
     </li>

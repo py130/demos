@@ -4,7 +4,7 @@ import NavListItem from './nav-list-item.vue'
 const navList = [
   {
     navPath: '/demos/demo-list',
-    navLabel: '列表页'
+    navLabel: '首页'
   },
   // {
   //   navPath: '/demos/demo-list-detail',
@@ -13,7 +13,7 @@ const navList = [
 ]
 </script>
 <template>
-  <nav class="p-4 bg-orange-100 h-[var(--navbar-height)] flex items-center gap-4 ">
+  <nav class="px-4 bg-orange-100 h-[var(--navbar-height)] flex items-center gap-4 ">
     <NavListItem
       v-for="({ navPath, navLabel }) in navList"
       :navPath="navPath"

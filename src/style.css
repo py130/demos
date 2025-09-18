@@ -1,13 +1,15 @@
 @import "tailwindcss";
 
-:root {
+:root, body {
   font-size: 26px;
   background-color: #F7F7F7;
   --navbar-height: 70px;
+  --naive-rem: 14px;
 }
 
 @media (max-width: 768px) {
-  :root {
+  :root, body {
     font-size: 6vw;
   }
 }
+

@@ -13,8 +13,8 @@ defineProps({
 <template>
   <RouterLink :to="navPath">
     <span
-      class="text-orange-800 underline-offset-4"
-      :class="{ underline: $route.path === navPath }"
+      class="text-orange-800 underline-offset-8"
+      :class="{ underline: $route.path !== navPath }"
     >
       {{ navLabel }}
     </span>

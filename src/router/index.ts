@@ -5,7 +5,8 @@ import DemoList from '../pages/demo-list/index.vue';
 import DemoListDetail from '../pages/demo-list-detail/index.vue';
 
 interface DemoDetailQuery {
-  componentName: string;
+  title: string
+  componentName: string
 }
 
 const routes: RouteRecordRaw[] = [
