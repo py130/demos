@@ -1,9 +1,14 @@
 import { createWebHistory, createRouter } from "vue-router";
+import type { RouteRecordRaw } from 'vue-router';
 
 import DemoList from '../pages/demo-list/index.vue';
 import DemoListDetail from '../pages/demo-list-detail/index.vue';
 
-const routes = [
+interface DemoDetailQuery {
+  componentName: string;
+}
+
+const routes: RouteRecordRaw[] = [
   {
     path: '/demos',
     redirect: '/demos/demo-list'
@@ -18,10 +23,12 @@ const routes = [
       {
         path: 'demo-list-detail',
         component: DemoListDetail,
+        meta: {
+          query: {} as DemoDetailQuery
+        }
       },
     ]
-  }, 
-  
+  },
 ]
 
 const router = createRouter({

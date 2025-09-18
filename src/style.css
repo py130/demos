@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --navbar-height: 40px;
+  font-size: 26px;
+  background-color: #F7F7F7;
+  --navbar-height: 70px;
+}
+
+@media (max-width: 768px) {
+  :root {
+    font-size: 6vw;
+  }
 }
